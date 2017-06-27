@@ -7,28 +7,33 @@
     </head>
     <body ng-controller="mainController"> 
         <h1>Some useful government service</h1>
-        <form>
+        
+        <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
+            Please fill in everything!
+        </div>
+
+        <form name="exampleForm" ng-submit="formSubmit()">
             <label for="name">Name</label>
-            <input name="name" type="text">
+            <input ng-model="name" required name="name" type="text">
             <br>
 
             <label for="age">Age</label>
-            <input name="age" type="text">
+            <input ng-model="age" required name="age" type="text">
             <br>
             
             <label for="sex">Sex</label>
             <span>Male</span>
-            <input type="radio" name="sex" value="male" checked>
+            <input ng-model="sex" required type="radio" name="sex" value="male" checked>
             <span>Female</span>
-            <input type="radio" name="sex" value="female" checked>
+            <input ng-model="sex" required type="radio" name="sex" value="female" checked>
             <br>
     
             <label for="country">Country</label>
-            <select ng-model="country" name="country" ng-options="name as country.name for country in countries">
+            <select required ng-model="country" name="country" ng-options="country.name as country.name for country in countries">
             </select>
             <br>
 
-            <button>Apply</button>
+            <button type="submit">Apply</button>
         </form>
     </body>
 </html>
