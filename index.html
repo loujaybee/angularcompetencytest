@@ -24,9 +24,7 @@
             <br>
     
             <label for="country">Country</label>
-            <select name="country">
-                <option value="Dummy"></option>
-                <option value="Dummy 2"></option>
+            <select ng-model="country" name="country" ng-options="name as country.name for country in countries">
             </select>
             <br>
 
