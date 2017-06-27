@@ -4,15 +4,15 @@
         <script src="app.js"></script>
         <script src="main.controller.js"></script>
         <script src="countries.service.js"></script>
+        <script src="public/components/form/form.directive.js"></script>
+
+        <link rel="stylesheet" href="public/styles/main.css">
     </head>
     <body ng-controller="mainController"> 
-        <h1>Some useful government service</h1>
-        
-        <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
-            Please fill in everything!
-        </div>
 
         <form name="exampleForm" ng-submit="formSubmit()">
+            <h1>Some useful government service</h1>
+
             <label for="name">Name</label>
             <input ng-model="name" required name="name" type="text">
             <br>
@@ -34,6 +34,10 @@
             <br>
 
             <button type="submit">Apply</button>
+
+            <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
+                Please fill in everything!
+            </div>
         </form>
     </body>
 </html>
