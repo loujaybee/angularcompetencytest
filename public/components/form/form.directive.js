@@ -3,6 +3,8 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
         restrict: 'E',
         link: function($scope) {
 
+            $scope.user = {};
+
             countryService.get().then(function(data) {
                 $scope.countries = data.data;
             });
@@ -12,13 +14,14 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
                 // Guard against browsers where native form validation fails
                 if (!$scope.exampleForm.$valid) return;
 
-                $state.go('success');
+                userService.create($scope.user)
+                    .then(function(){
 
-                console.log('submitted!');
-                
-                userService.set({
-                    name: $scope.name
-                });
+                        // TODO: Get from API? 
+                        userService.set($scope.user);
+
+                        $state.go('success');
+                    });
             };
 
         },
@@ -28,22 +31,22 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
             <h1>Some useful government service</h1>
 
             <label for="name">Name</label>
-            <input ng-model="name" required name="name" type="text">
+            <input ng-model="user.name" required name="name" type="text">
             <br>
 
             <label for="age">Age</label>
-            <input ng-model="age" required name="age" type="text">
+            <input ng-model="user.age" required name="age" type="text">
             <br>
             
             <label for="sex">Sex</label>
             <span>Male</span>
-            <input ng-model="sex" required type="radio" name="sex" value="male" checked>
+            <input ng-model="user.sex" required type="radio" name="sex" value="male" checked>
             <span>Female</span>
-            <input ng-model="sex" required type="radio" name="sex" value="female" checked>
+            <input ng-model="user.sex" required type="radio" name="sex" value="female" checked>
             <br>
     
             <label for="country">Country</label>
-            <select required ng-model="country" name="country" ng-options="country.name as country.name for country in countries">
+            <select required ng-model="user.country" name="country" ng-options="country.name as country.name for country in countries">
             </select>
             <br>
 
