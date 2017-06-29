@@ -2,42 +2,16 @@
     <head>
         <base href="/">
         <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="public/app.js"></script>
-        <script src="main.controller.js"></script>
         <script src="public/services/countries.service.js"></script>
+        <script src="public/services/user.service.js"></script>
+        <script src="public/components/form/form.directive.js"></script>
+        <script src="public/components/success/success.directive.js"></script>
 
         <link rel="stylesheet" href="public/styles/main.css">
     </head>
-    <body ng-controller="mainController"> 
-
-        <form name="exampleForm" ng-submit="formSubmit()">
-            <h1>Some useful government service</h1>
-
-            <label for="name">Name</label>
-            <input ng-model="name" required name="name" type="text">
-            <br>
-
-            <label for="age">Age</label>
-            <input ng-model="age" required name="age" type="text">
-            <br>
-            
-            <label for="sex">Sex</label>
-            <span>Male</span>
-            <input ng-model="sex" required type="radio" name="sex" value="male" checked>
-            <span>Female</span>
-            <input ng-model="sex" required type="radio" name="sex" value="female" checked>
-            <br>
-    
-            <label for="country">Country</label>
-            <select required ng-model="country" name="country" ng-options="country.name as country.name for country in countries">
-            </select>
-            <br>
-
-            <button type="submit">Apply</button>
-
-            <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
-                Please fill in everything!
-            </div>
-        </form>
+    <body> 
+        <div ui-view></div>
     </body>
 </html>
