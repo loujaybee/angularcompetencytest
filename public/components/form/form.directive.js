@@ -49,8 +49,6 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
             <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
                 Please ensure all fields are populated.
             </div>
-
-            <div ui-view></div>
         </form>
         `
     };
