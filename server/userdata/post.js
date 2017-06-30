@@ -6,7 +6,8 @@ module.exports = (req, res) => {
             name: req.body.name,
             sex: req.body.sex,
             age: req.body.age,
-            country: req.body.country
+            country: req.body.country,
+            dateCreated: new Date()
         })
         .then((data) => res.send({
             success: true,
