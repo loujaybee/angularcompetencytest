@@ -12,7 +12,10 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
             $scope.formSubmit = function() {
 
                 // Guard against browsers where native form validation fails
-                if (!$scope.exampleForm.$valid) return;
+                if (!$scope.exampleForm.$valid) {
+                    $scope.formIsIncorrect = true;
+                    return;
+                }
 
                 userService.create($scope.user)
                     .then(() => userService.set($scope.user))
@@ -22,6 +25,7 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
         },
         scope: {},
         template: `
+         <div class="form_component">
           <form name="exampleForm" ng-submit="formSubmit()">
             <h1>Some Useful Government Service</h1>
 
@@ -46,10 +50,11 @@ demoApp.directive('daForm', function(countryService, $state, userService) {
             <br>
             <button type="submit">Apply</button>
 
-            <div ng-if="!exampleForm.$valid && exampleForm.$submitted">
+            <div ng-if="(!exampleForm.$valid && exampleForm.$submitted) || formIsIncorrect">
                 Please ensure all fields are populated.
             </div>
-        </form>
+          </form>
+        </div>
         `
     };
 });
