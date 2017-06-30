@@ -5,6 +5,5 @@ demoApp.service("userService", function($http){
 
     this.set = (data) => user = data
     this.get = () => user;
-
     this.create = (data) => $http.post('/api/userdata', data);
 });
