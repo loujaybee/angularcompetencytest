@@ -1,3 +1,5 @@
+'use strict';
+
 demoApp.component('daSuccess', {
     controller: function successComponent($scope, userService) {
 
@@ -5,8 +7,5 @@ demoApp.component('daSuccess', {
 
         $ctrl.name = userService.get().name;
     },
-    template: `
-            <h1> Application complete </h1>
-            <p>{{$ctrl.name}} Thank you for applying to this useful government service</p>
-        `
+    template: '\n            <h1> Application complete </h1>\n            <p>{{$ctrl.name}} Thank you for applying to this useful government service</p>\n        '
 });

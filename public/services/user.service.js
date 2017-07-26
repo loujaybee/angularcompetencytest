@@ -1,9 +1,17 @@
-demoApp.service("userService", function($http){
+"use strict";
+
+demoApp.service("userService", function ($http) {
 
     // Levarage closure private scoping
-    let user = {};
+    var user = {};
 
-    this.set = (data) => user = data
-    this.get = () => user;
-    this.create = (data) => $http.post('/api/userdata', data);
+    this.set = function (data) {
+        return user = data;
+    };
+    this.get = function () {
+        return user;
+    };
+    this.create = function (data) {
+        return $http.post('/api/userdata', data);
+    };
 });
